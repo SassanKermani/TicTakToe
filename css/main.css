@@ -1,0 +1,20 @@
+body{
+	text-align: center;
+	margin-top: 20vh;
+}
+
+.block{
+	display: block;
+	height: 5%;
+}
+
+button{
+	height: 10vh;
+	width: 10vh;
+	margin: .5%; 
+}
+
+button:hover { 
+    background-color: yellow;
+}
+Try it Yourself »

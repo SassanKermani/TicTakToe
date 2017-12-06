@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="css/main.css">
+	<script ssrc="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js""></script>
+	<title> TicTacToe </title>
+</head>
+<body>
+	
+
+	<button class="az" class="za"  id="aa"> aa </button>
+	<button class="az" class="zb"  id="ab"> ab </button>
+	<button class="az" class="zc"  id="ac"> ac </button>
+
+	<div class="block"></div>
+
+	<button class="bz" class="za" id="ba"> ba </button>
+	<button class="bz" class="zb" id="bb"> bb </button>
+	<button class="bz" class="zc" id="bc"> bc </button>
+	
+	<div class="block"></div>
+
+	<button class="cz" class="za" id="ca"> ca </button>
+	<button class="cz" class="zb" id="cb"> cb </button>
+	<button class="cz" class="zc" id="cc"> cc </button>
+	
+
+</body>
+
+<script type="text/javascript">
+
+	//if even player 2's turn
+	var playerturn = 1
+
+	//vars for each squar
+	var aa = document.getElementById(aa);
+	var zaa = 0;
+	var ab = document.getElementById(ab);
+	var zab = 0;
+	var ac = document.getElementById(ac);
+	var zac = 0;
+
+	var ba = document.getElementById(ba);
+	var zba= 0;
+	var bb = document.getElementById(bb);
+	var zbb = 0;
+	var bc = document.getElementById(bc);
+	var zbc = 0;
+
+	
+	var ca = document.getElementById(ca);
+	var zca = 0;
+	var cb = document.getElementById(cb);
+	var zcb = 0;
+	var cc = document.getElementById(cc);
+	var zcc = 0;
+
+	//is the game over returns true if it is
+	function myFunction(){
+    	var ifGameover = false;
+    	if(zaa == zab && zab == zac){
+    		if(zba == zbb && zbb == zbc){
+    			if(zca ==zcb && zcc ){
+    				//we did the acros so far
+    				if(zaa == zba && zba == zca){
+    					if(zab == zbb && zbb == zcb){
+    						if(zac == zbc && zbc == zcc){
+    							//this is the colloms
+    							if(zaa == zbb && zbb == bcc){
+    								if(zac == zbb && zbb == zca){
+    									ifGameover = true;
+    								}
+    							}
+    						}
+
+    					}
+
+    				}
+    			}
+    		}
+    	}
+    	return ifGameover;
+	}
+
+	document.getElementById('aa').addEventListener('click', myFunction() );
+
+</script>
+</html>
