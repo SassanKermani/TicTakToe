@@ -19,6 +19,8 @@
 	var boardSize = 3;
 	var board = [];
 
+	var turncout = 1; 							//this is the var that hold player turn
+
 	for (i = 0; i < boardSize; i++){
 
 		board[i] = [];
@@ -41,7 +43,7 @@
 			divs[i][ii].classList.add("gameSpot");
 			console.log( "div[i][ii] " + divs[i][ii]);
 			
-			divs[i][ii].addEventListener( "click", doTheThings() );
+			divs[i][ii].addEventListener('click', doTheThings );
 
 			var thing = document.getElementById("InBody");
 			document.getElementById("InBody").appendChild(divs[i][ii]);
@@ -54,6 +56,9 @@
 	}
 
 	function doTheThings(){
+		if (turn % 2 == 0){
+			
+		}
 		console.log("buttons work");
 	}
 
