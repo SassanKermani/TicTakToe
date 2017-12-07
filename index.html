@@ -8,64 +8,93 @@
 <body>
 	
 
-	<button class="az" class="thing"  id="aa"> aa </button>
-	<button class="az" class="thing"  id="ab"> ab </button>
-	<button class="az" class="thing"  id="ac"> ac </button>
+	<button class="az, thing"   id="aa"> aa </button>
+	<button class="az, thing"   id="ab"> ab </button>
+	<button class="az, thing"   id="ac"> ac </button>
 
 	<div class="block"></div>
 
-	<button class="bz" class="thing" id="ba"> ba </button>
-	<button class="bz" class="thing" id="bb"> bb </button>
-	<button class="bz" class="thing" id="bc"> bc </button>
+	<button class="bz, thing"  id="ba"> ba </button>
+	<button class="bz, thing"  id="bb"> bb </button>
+	<button class="bz, thing"  id="bc"> bc </button>
 	
 	<div class="block"></div>
 
-	<button class="cz" class="thing" id="ca"> ca </button>
-	<button class="cz" class="thing" id="cb"> cb </button>
-	<button class="cz" class="thing" id="cc"> cc </button>
+	<button class="cz, thing"  id="ca"> ca </button>
+	<button class="cz, thing"  id="cb"> cb </button>
+	<button class="cz, thing"  id="cc"> cc </button>
 	
 
 </body>
 
 <script type="text/javascript">
 
-	//vars
-	var allTheThings = [0,0,0][0,0,0][0,0,0];
-	var thing = 1;
+	//var
+	var rowOne = [0, 0, 0];
+	var rowTwo = [0, 0, 0];
+	var rowThree = [0, 0, 0];
 
-	console.log("this");
-	
-	for(var i = 0; i < 3; i++ ){
-		for(var ii = 0; ii < 3; ii++ ){
-			allTheThings[i][ii] = thing;
-			console.log(allTheThings);
+	//turn counter
+	var turn = 1;
+
+	console.log("got to line 37");
+
+	// document.getElementsByClassName("thing").addEventListener("click", doTheThings(this));
+
+	var cell = document.getElementsByClassName("thing");
+	for( var i = 0; i < cell.length; i++ ){
+  		cell[i].addEventListener('click', doTheThings );
+  		console.log(cell[i]);
+
+	}
+
+	console.log(cell);
+	console.log(turn);
+
+	function doTheThings(){
+		console.log("doTheThings worked sorta");
+		console.log(this);
+
+		if( turn % 2 == 0 ){
+			this.setAttribute("style", "background-color: red");
+			turn = turn + 1;
+			console.log("if");
+			console.log(turn);
+		}else{
+			this.setAttribute("style", "background-color: blue");
+			turn = turn + 1;
+			console.log("else");
+			console.log(turn);
 		}
+		//this.setAttribute("style", "background-color: red;")
 	}
 
-	//is the game over returns true if it is
-	function myFunction(){
-    	var ifGameover = false;
-    	if(zaa == zab && zab == zac){
-    		if(zba == zbb && zbb == zbc){
-    			if(zca ==zcb && zcc ){
-    				//we did the acros so far
-    				if(zaa == zba && zba == zca){
-    					if(zab == zbb && zbb == zcb){
-    						if(zac == zbc && zbc == zcc){
-    							//this is the colloms
-    							if(zaa == zbb && zbb == bcc){
-    								if(zac == zbb && zbb == zca){
-    									ifGameover = true;
-    								}
-    							}
-    						}
-    					}
-    				}
-    			}
-    		}
-    	}
-    	return ifGameover;
-	}
+
+
+	// //is the game over returns true if it is
+	// function myFunction(){
+ //    	var ifGameover = false;
+ //    	if(zaa == zab && zab == zac){
+ //    		if(zba == zbb && zbb == zbc){
+ //    			if(zca ==zcb && zcc ){
+ //    				//we did the acros so far
+ //    				if(zaa == zba && zba == zca){
+ //    					if(zab == zbb && zbb == zcb){
+ //    						if(zac == zbc && zbc == zcc){
+ //    							//this is the colloms
+ //    							if(zaa == zbb && zbb == bcc){
+ //    								if(zac == zbb && zbb == zca){
+ //    									ifGameover = true;
+ //    								}
+ //    							}
+ //    						}
+ //    					}
+ //    				}
+ //    			}
+ //    		}
+ //    	}
+ //    	return ifGameover;
+	// }
 
 </script>
 </html>
