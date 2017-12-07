@@ -29,34 +29,18 @@
 
 <script type="text/javascript">
 
-	//if even player 2's turn
-	var playerturn = 1
+	//vars
+	var allTheThings = [0,0,0][0,0,0][0,0,0];
+	var thing = 1;
 
-	//vars for each squar
-	var aa = document.getElementById(aa);
-	var zaa = 0;
-	var ab = document.getElementById(ab);
-	var zab = 0;
-	var ac = document.getElementById(ac);
-	var zac = 0;
-
-	var ba = document.getElementById(ba);
-	var zba= 0;
-	var bb = document.getElementById(bb);
-	var zbb = 0;
-	var bc = document.getElementById(bc);
-	var zbc = 0;
-
+	console.log("this");
 	
-	var ca = document.getElementById(ca);
-	var zca = 0;
-	var cb = document.getElementById(cb);
-	var zcb = 0;
-	var cc = document.getElementById(cc);
-	var zcc = 0;
-
-	//the part that dose stuff
-	document.getElementsByClassName("thing").
+	for(var i = 0; i < 3; i++ ){
+		for(var ii = 0; ii < 3; ii++ ){
+			allTheThings[i][ii] = thing;
+			console.log(allTheThings);
+		}
+	}
 
 	//is the game over returns true if it is
 	function myFunction(){
@@ -82,8 +66,6 @@
     	}
     	return ifGameover;
 	}
-
-	document.getElementById('aa').addEventListener('click', myFunction() );
 
 </script>
 </html>
