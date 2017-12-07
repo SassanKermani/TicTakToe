@@ -39,7 +39,10 @@
 			divs[i][ii] = document.createElement("div");
 			divs[i][ii].innerHTML = "hey";
 			divs[i][ii].classList.add("gameSpot");
-			console.log(divs[i][ii]);
+			console.log( "div[i][ii] " + divs[i][ii]);
+			
+			divs[i][ii].addEventListener( "click", doTheThings() );
+
 			var thing = document.getElementById("InBody");
 			document.getElementById("InBody").appendChild(divs[i][ii]);
 
@@ -51,7 +54,7 @@
 	}
 
 	function doTheThings(){
-		
+		console.log("buttons work");
 	}
 
 </script>
