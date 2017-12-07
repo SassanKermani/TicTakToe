@@ -73,16 +73,19 @@
 	function isTheGameOverYet(itsAThing){
 		isTheGameOver = false;
 
-		var holder = itsAThing.id;
-		console.log("holder " +   holder);
+		var holder = itsAThing.textContent;
+		console.log("holder " + holder);
 
 		switch(holder){
-			case(holder == "aa"):
-				console.log("is this working?");
+			case( holder = "x"):
+				console.log("switch is working xxxxxxxx");
+				break;
+			case( holder = "o"):
+				console.log("switch is working oooooooo");
 				break;
 			default:
 				console.log(itsAThing)
-				console.log(itsAThing.id);
+				console.log("switch is not working");
 				break;
 		}
 
@@ -99,12 +102,14 @@
 
 		if( turn % 2 == 0 ){
 			this.setAttribute("style", "background-color: red");
+			this.innerHTML = "x";
 			turn = turn + 1;
 			console.log("if");
 			console.log(turn);
 			document.getElementById("whoTurnItIS").setAttribute("style", "background-color: blue");
 		}else{
 			this.setAttribute("style", "background-color: blue");
+			this.innerHTML = "o";
 			turn = turn + 1;
 			console.log("else");
 			console.log(turn);
