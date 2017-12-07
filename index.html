@@ -34,6 +34,8 @@
 
 <script type="text/javascript">
 
+	alert("ok so it dose not work... but look we are getting there");
+
 	//var
 	var board = {
 		aa: 0,
@@ -70,22 +72,72 @@
 	console.log(cell);
 	console.log(turn);
 
+	function getPlayerTurn(){
+		var playerturn = 0;
+
+		if(turn % 2 == 0){
+			playerturn = 1;
+			console.log("---even---");
+		}else{
+			playerturn = 2;
+			console.log("---odd---");
+		}
+
+		return	 playerturn;
+	}
+
 	function isTheGameOverYet(itsAThing){
 		isTheGameOver = false;
 
-		var holder = itsAThing.textContent;
+		var holder = itsAThing.id;
 		console.log("holder " + holder);
 
 		switch(holder){
-			case( holder = "x"):
-				console.log("switch is working xxxxxxxx");
+			//this the first row
+			case( holder = "aa"):
+				console.log("switch is working aa");
+				
+				// otherBoard[0] = getPlayerTurn();
+				// console.log("otherBoard[0] " + otherBoard[0]);
+
+				board.aa = getPlayerTurn();
+				console.log("board.aa " + board.aa);
+
 				break;
-			case( holder = "o"):
-				console.log("switch is working oooooooo");
+
+			case( holder = "ab"):
+				console.log("switch is working ab");
+				board.ab = getPlayerTurn();
+				console.log("board.ab " + board.ab);
 				break;
+
+			case( holder = "ac"):
+				console.log("switch is working ac");
+				break;
+			//this is the second row
+			case( holder = "ba"):
+				console.log("switch is working ba");
+				break;
+			case( holder = "bb"):
+				console.log("switch is working bb");
+				break;
+			case( holder = "bc"):
+				console.log("switch is working bc");
+				break;
+			//this is the third row
+			case( holder = "ca"):
+				console.log("switch is working ca");
+				break;
+			case( holder = "cb"):
+				console.log("switch is working cb");
+				break;
+			case( holder = "cc"):
+				console.log("switch is working cc");
+				break;
+			//and the default
 			default:
 				console.log(itsAThing)
-				console.log("switch is not working");
+				alert("you broke it i didnt even think you could do that =(");
 				break;
 		}
 
@@ -103,22 +155,21 @@
 		if( turn % 2 == 0 ){
 			this.setAttribute("style", "background-color: red");
 			this.innerHTML = "x";
-			turn = turn + 1;
 			console.log("if");
 			console.log(turn);
 			document.getElementById("whoTurnItIS").setAttribute("style", "background-color: blue");
 		}else{
 			this.setAttribute("style", "background-color: blue");
 			this.innerHTML = "o";
-			turn = turn + 1;
 			console.log("else");
 			console.log(turn);
 			document.getElementById("whoTurnItIS").setAttribute("style", "background-color: red");
 		}
+		turn = turn + 1;
 		isTheGameOverYet(this);
 
 		if(isTheGameOver == true){
-
+			alert("some one won the game");			//this needs work
 		}
 
 		console.log("line 83");
