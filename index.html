@@ -2,8 +2,79 @@
 <html>
 <head>
 	<title></title>
+	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
+	
+	<!-- <div class="gameItem"> a </div>
+	<div class="gameItem"> a </div>
+	<div class="gameItem"> a </div>
+
+	<div class="newLine">  </div>
+
+	<div class="gameItem"> a </div>
+	<div class="gameItem"> a </div>
+	<div class="gameItem"> a </div>
+
+	<div class="newLine">  </div>
+	
+	<div class="gameItem"> a </div>
+	<div class="gameItem"> a </div>
+	<div class="gameItem"> a </div> -->
+
+	<center> <div id="allHtml"></div> </center>
 
 </body>
+
+<script>
+	
+	console.log("js runs");
+
+	//vars for the rows
+	var rowOne = {
+		left: [0 , 1],
+		middle: [0, 2],
+		right: [0, 3],
+	};
+	
+	console.log(rowOne);
+	
+	var rowTwo = {
+		left: [0, 4],
+		middle: [0 , 5],
+		right: [0, 6],
+	};
+
+	console.log(rowTwo);
+	
+	var rowThree = {
+		left: [0, 7],
+		middle: [0, 8],
+		right: [0, 9],
+	}
+	console.log(rowThree);
+
+
+	//for loop getting this set up
+	for(var i = 0; i < 9; i++){
+		//makes all the tags
+		var makeTheTags = document.createElement("div");
+		makeTheTags.innerHTML = "a";
+		makeTheTags.className = "gameItem"
+
+		document.getElementById("allHtml").appendChild(makeTheTags);
+		console.log(i);
+		console.log(makeTheTags);
+
+		//so there not all inline
+		if( ( i + 1 ) % 3 == 0  ){
+			console.log("this one is divisble by three")
+			makeNewThings = document.createElement("div");
+			document.getElementById("allHtml").appendChild(makeNewThings);
+		}
+	}
+
+
+</script>
+
 </html>

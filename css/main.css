@@ -1,0 +1,25 @@
+
+#allHtml{
+	height: 100vh;
+	width: 100vh;
+	background-color: green;
+
+	padding-top: 20vh;
+}
+.gameItem{
+	display: inline-block;
+	
+	margin: 1%;
+
+	height: 10vh;
+
+	width: 10vh;
+	
+	border: solid black 1px; 
+	background-color: yellow;
+}
+
+.gameItem:hover{
+	background-color: blue;
+}
+
