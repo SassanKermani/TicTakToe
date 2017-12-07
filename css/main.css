@@ -1,20 +1,13 @@
-body{
+#InBody{
+	margin-top: 10vh;
+}
+
+.gameSpot{
+	display: inline-block;
+	background-color: aqua;
+	/*height: 10vh;
+	width: 10vh;*/
 	text-align: center;
-	margin-top: 20vh;
+	padding: 5% 5% 5% 5%;
+	border: solid black 3px;
 }
-
-.block{
-	display: block;
-	height: 5%;
-}
-
-button{
-	height: 10vh;
-	width: 10vh;
-	margin: .5%; 
-}
-
-button:hover { 
-    background-color: yellow;
-}
-Try it Yourself »

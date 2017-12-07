@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<title></title>
 </head>
 <body>
-	<div id="InBody">
-		
-	</div>
+	<center>
+		<h1> tictactoe </h1>
+		<div id="InBody">
+		</div>
+	</center>
+
+
 </body>
 <script type="application/javascript">
 	
@@ -29,17 +34,22 @@
 	for (i = 0; i < boardSize; i++){
 		divs[i] = [];
 		for(ii = 0; ii < boardSize; ii++){
+			
+			//setting up the divs on the page
 			divs[i][ii] = document.createElement("div");
 			divs[i][ii].innerHTML = "hey";
 			divs[i][ii].classList.add("gameSpot");
 			console.log(divs[i][ii]);
-
 			var thing = document.getElementById("InBody");
+			document.getElementById("InBody").appendChild(divs[i][ii]);
 
-		}
-		var make = document.createElement(div);
+		}	
+		//this makes it so there are 3 lines
+		var make = document.createElement("div");
 		make.classList.add("newLine")
+		document.getElementById("InBody").appendChild(make);
 	}
+
 
 
 </script>
