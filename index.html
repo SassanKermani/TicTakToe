@@ -7,6 +7,9 @@
 </head>
 <body>
 	
+	<center> <div id="whoTurnItIS"> Color corresponds to whose turn it is </div> </center>
+
+	<div class="block"></div>
 
 	<button class="az, thing"   id="aa"> aa </button>
 	<button class="az, thing"   id="ab"> ab </button>
@@ -29,13 +32,16 @@
 
 <script type="text/javascript">
 
-	//var
-	var rowOne = [0, 0, 0];
-	var rowTwo = [0, 0, 0];
-	var rowThree = [0, 0, 0];
+	// //var
+	// var rowOne = [0, 0, 0];
+	// var rowTwo = [0, 0, 0];
+	// var rowThree = [0, 0, 0];
 
 	//turn counter
 	var turn = 1;
+
+	//is the game over
+	var isTheGameOver = false;
 
 	console.log("got to line 37");
 
@@ -51,6 +57,16 @@
 	console.log(cell);
 	console.log(turn);
 
+	function isTheGameOverYet(itsAThing){
+		isTheGameOver = false;
+
+		console.log("ran isTheGameOverYet");
+		console.log(itsAThing);
+
+		return isTheGameOver;
+	}
+
+	//add a thing were you can see who's turn it is
 	function doTheThings(){
 		console.log("doTheThings worked sorta");
 		console.log(this);
@@ -60,14 +76,23 @@
 			turn = turn + 1;
 			console.log("if");
 			console.log(turn);
+			document.getElementById("whoTurnItIS").setAttribute("style", "background-color: blue");
 		}else{
 			this.setAttribute("style", "background-color: blue");
 			turn = turn + 1;
 			console.log("else");
 			console.log(turn);
+			document.getElementById("whoTurnItIS").setAttribute("style", "background-color: red");
 		}
-		//this.setAttribute("style", "background-color: red;")
+		isTheGameOverYet(this);
+
+		if(isTheGameOver == true){
+
+		}
+
+		console.log("line 83");
 	}
+
 
 
 
