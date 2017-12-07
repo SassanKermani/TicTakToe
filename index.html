@@ -34,10 +34,22 @@
 
 <script type="text/javascript">
 
-	// //var
-	// var rowOne = [0, 0, 0];
-	// var rowTwo = [0, 0, 0];
-	// var rowThree = [0, 0, 0];
+	//var
+	var board = {
+		aa: 0,
+		ab: 0,
+		ac: 0,
+
+		ba: 0,
+		bb: 0,
+		bc: 0,
+
+		ca: 0,
+		cb: 0,
+		cc: 0,
+	}
+
+	var otherBoard = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
 
 	//turn counter
 	var turn = 1;
@@ -53,7 +65,6 @@
 	for( var i = 0; i < cell.length; i++ ){
   		cell[i].addEventListener('click', doTheThings );
   		console.log(cell[i]);
-
 	}
 
 	console.log(cell);
@@ -61,6 +72,19 @@
 
 	function isTheGameOverYet(itsAThing){
 		isTheGameOver = false;
+
+		var holder = itsAThing.id;
+		console.log("holder " +   holder);
+
+		switch(holder){
+			case(holder == "aa"):
+				console.log("is this working?");
+				break;
+			default:
+				console.log(itsAThing)
+				console.log(itsAThing.id);
+				break;
+		}
 
 		console.log("ran isTheGameOverYet");
 		console.log(itsAThing);
