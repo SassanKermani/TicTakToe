@@ -2,11 +2,12 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<title></title>
+	<title>  </title>
 </head>
 <body>
+
 	<center>
-		<h1> tictactoe </h1>
+		<h1 id="title"> tictactoe </h1>
 		<div id="InBody">
 		</div>
 	</center>
@@ -18,49 +19,166 @@
 	//setting up vars
 	var boardSize = 3;
 	var board = [];
-
 	var turn = 1; 							//this is the var that hold player turn
 
-	for (i = 0; i < boardSize; i++){
+	//row and collom totals
+	var row = [];
+	var col = [];
+	var diOne;
+	var diTwo;
 
+	for(var i = 0; i < boardSize; i++){
+		
 		board[i] = [];
+		
+		for(var ii = 0; ii < boardSize; ii++){
+		
+			board[i][ii] = [];
+			board[i][ii][0] = document.createElement("button");						//the divs
+			board[i][ii][0].classList.add("gameSpot");
+			board[i][ii][0].innerHTML = "_";
 
-		for(ii = 0; ii < boardSize; ii++){
-			board[i][ii] = 0;
-			//console.log(board);
+			board[i][ii][0].addEventListener('click', myFunction( i, ii ) );
+
+			document.getElementById("InBody").appendChild(board[i][ii][0]);
+
+			board[i][ii][1] = 0;													//who ouns the thing
+			board[i][ii][2] = 0;													//the turn number it was played on
+
 		}
-	} 
 
-	//setting up divs
-	var divs = [];
-	for (i = 0; i < boardSize; i++){
-		divs[i] = [];
-		for(ii = 0; ii < boardSize; ii++){
-			
-			//setting up the divs on the page
-			divs[i][ii] = document.createElement("div");
-			divs[i][ii].innerHTML = "hey";
-			divs[i][ii].classList.add("gameSpot");
-			console.log( "div[i][ii] " + divs[i][ii]);
-			
-			divs[i][ii].addEventListener('click', doTheThings );
-
-			var thing = document.getElementById("InBody");
-			document.getElementById("InBody").appendChild(divs[i][ii]);
-
-		}	
-		//this makes it so there are 3 lines
 		var make = document.createElement("div");
-		make.classList.add("newLine")
-		document.getElementById("InBody").appendChild(make);
+	 	make.classList.add("newLine");
+		document.getElementById("InBody").appendChild( make );
+
 	}
 
-	function doTheThings(){
-		if (turn % 2 == 0){
-			
-		}
-		console.log("buttons work");
+	//trying to get a function to work
+	function myFunction(x, y){
+    	
+    	console.log("hey " + x + " " + y );
+
+    	board[x][y][2] = turn;
+
+    	if(board[x][y][1] == 0){
+    		if (turn % 2 == 0){
+    			board[x][y][0].classList.add("xSpot");
+    			board[x][y][0].innerHTML("X");
+    			document.getElementById("title").innerHTML = "O's turn now";
+    			board[x][y][1] = 1;
+    		}else{
+    			board[x][y][0].classList.add("oSpot");
+    			board[x][y][0].innerHTML("O");
+    			document.getElementById("title").innerHTML = "X's turn now";
+    			board[x][y][1] = -1;
+    		}
+
+    		if(isGameOver(x, y)){
+    			document.getElementById("title").innerHTML = "winner";
+    		}
+    	}else{
+    		document.getElementById("title").innerHTML = "You cant go there";
+    	}
+
 	}
+
+	function isGameOver(x, y){
+		var win = false;
+
+		// for(var iii = 0; iii < (boardSize*2)+2; iii++){
+		// 	win[i] = 0;
+		// }
+
+		for(var i = 0; i < boardSize; i++){
+			for(var ii = 0; ii < boardSize; ii++){
+				row[i] = board[i][ii][1] + row[i];
+				col[i] = board[ii][i][1] + col[i	];
+
+				if(i == ii){
+					diOne = diOne + board[ii][i][1];
+				}
+
+				//need wiinng logic for bottom left to top right
+			}
+		}
+
+		for(var i = 0; i > boardSize; i++){
+			if (row[i] == (boardSize - 1) | row[i] == ((boardSize - 1) * -1)  ){
+				win = true;
+			}
+			if (col[i] == (boardSize - 1) | col[i] == ((boardSize - 1) * -1)  ){
+				win = true;
+			}
+			if( diOne == (boardSize - 1) | diOne == ((boardSize - 1) * -1) ){
+				win = true;
+			}
+		}
+
+		return win;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	// for (i = 0; i < boardSize; i++){
+
+	// 	board[i] = [];
+
+	// 	for(ii = 0; ii < boardSize; ii++){
+	// 		board[i][ii] = 0;
+	// 		//console.log(board);
+	// 	}
+	// } 
+
+	// //setting up divs
+	// var divs = [];
+	// for (i = 0; i < boardSize; i++){
+	// 	divs[i] = [];
+	// 	for(ii = 0; ii < boardSize; ii++){
+			
+	// 		//setting up the divs on the page
+	// 		divs[i][ii] = document.createElement("div");
+	// 		divs[i][ii].innerHTML = "hey";
+	// 		divs[i][ii].classList.add("gameSpot");
+	// 		console.log( "div[i][ii] " + divs[i][ii]);
+			
+	// 		divs[i][ii].addEventListener('click', doTheThings );
+
+	// 		var thing = document.getElementById("InBody");
+	// 		document.getElementById("InBody").appendChild(divs[i][ii]);
+
+	// 	}	
+	// 	//this makes it so there are 3 lines
+	// 	var make = document.createElement("div");
+	// 	make.classList.add("newLine")
+	// 	document.getElementById("InBody").appendChild(make);
+	// }
+
+	// function doTheThings(){
+	// 	if (turn % 2 == 0){
+			
+	// 	}
+	// 	console.log("buttons work");
+	// }
 
 </script>
 </html>
