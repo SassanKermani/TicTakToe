@@ -4,6 +4,31 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<title>  </title>
 </head>
+
+<style type="text/css">
+	#InBody{
+		margin-top: 10vh;
+	}
+
+	.gameSpot{
+		display: inline-block;
+		background-color: aqua;
+		/*height: 10vh;
+		width: 10vh;*/
+		text-align: center;
+		padding: 5% 5% 5% 5%;
+		border: solid black 3px;
+	}
+
+	.xSpot{
+		background-color: red;
+
+	}
+
+	.oSpot{
+		background-color: blue;
+	}	
+</style>
 <body>
 
 	<center>
@@ -21,24 +46,74 @@
 	var board = [];
 	var turn = 1; 							//this is the var that hold player turn
 
-	//row and collom totals
-	var row = [];
-	var col = [];
-	var diOne;
-	var diTwo;
+	//funcitons
+	function myFunction(){
+		
+		console.log(this);
+
+		var x =  parseInt( this.id[0] );
+		var y = parseInt( this.id[1] );
+
+		console.log( x + " " + y );
+
+		if(board[x][y][1] == 1 || board[x][y][1] == -1){
+			alert("DON'T CHEET");
+		}else{
+			
+			board[x][y][2] = turn; 												//remnence of a dead feture
+
+			if( turn % 2 == 0 ){
+				board[x][y][1] = 1;
+				board[x][y][0].innerHTML = "X"
+				board[x][y][0].classList.add("xSpot")
+				document.getElementById("title").innerHTML = "O's Turn"
+			}else{
+				board[x][y][1] == -1;
+				board[x][y][0].innerHTML = "O"
+				board[x][y][0].classList.add("oSpot")
+				document.getElementById("title").innerHTML = "X's Turn"
+			}
+
+
+
+			turn = turn + 1;
+		}
+	}
+
+	function isGameOver(){
+		//getting x and y
+		var x =  parseInt( this.id[0] );
+		var y = parseInt( this.id[1] );
+
+		//win var
+		var win = [];
+		var isGameOverYet = false;
+
+		for(var i = 0; i < (boardSize * 2) + 2; i++ ){
+			win[i] = false;
+		}
+
+		
+
+	}
+
 
 	for(var i = 0; i < boardSize; i++){
-		
+
 		board[i] = [];
-		
+
 		for(var ii = 0; ii < boardSize; ii++){
-		
 			board[i][ii] = [];
 			board[i][ii][0] = document.createElement("button");						//the divs
 			board[i][ii][0].classList.add("gameSpot");
 			board[i][ii][0].innerHTML = "_";
 
-			board[i][ii][0].addEventListener('click', myFunction( i, ii ) );
+			var toString = i.toString() + ii.toString();
+			console.log(" pleas jsut work " + toString);
+			board[i][ii][0].setAttribute("id", toString )
+
+			//driver of the hole thing
+			board[i][ii][0].addEventListener('click', myFunction);
 
 			document.getElementById("InBody").appendChild(board[i][ii][0]);
 
@@ -54,68 +129,68 @@
 	}
 
 	//trying to get a function to work
-	function myFunction(x, y){
+	// function myFunction(x, y){
     	
-    	console.log("hey " + x + " " + y );
+ //    	console.log("hey " + x + " " + y );
 
-    	board[x][y][2] = turn;
+ //    	board[x][y][2] = turn;
 
-    	if(board[x][y][1] == 0){
-    		if (turn % 2 == 0){
-    			board[x][y][0].classList.add("xSpot");
-    			board[x][y][0].innerHTML("X");
-    			document.getElementById("title").innerHTML = "O's turn now";
-    			board[x][y][1] = 1;
-    		}else{
-    			board[x][y][0].classList.add("oSpot");
-    			board[x][y][0].innerHTML("O");
-    			document.getElementById("title").innerHTML = "X's turn now";
-    			board[x][y][1] = -1;
-    		}
+ //    	if(board[x][y][1] == 0){
+ //    		if (turn % 2 == 0){
+ //    			board[x][y][0].classList.add("xSpot");
+ //    			board[x][y][0].innerHTML("X");
+ //    			document.getElementById("title").innerHTML = "O's turn now";
+ //    			board[x][y][1] = 1;
+ //    		}else{
+ //    			board[x][y][0].classList.add("oSpot");
+ //    			board[x][y][0].innerHTML("O");
+ //    			document.getElementById("title").innerHTML = "X's turn now";
+ //    			board[x][y][1] = -1;
+ //    		}
 
-    		if(isGameOver(x, y)){
-    			document.getElementById("title").innerHTML = "winner";
-    		}
-    	}else{
-    		document.getElementById("title").innerHTML = "You cant go there";
-    	}
+ //    		if(isGameOver(x, y)){
+ //    			document.getElementById("title").innerHTML = "winner";
+ //    		}
+ //    	}else{
+ //    		document.getElementById("title").innerHTML = "You cant go there";
+ //    	}
 
-	}
+	// }
 
-	function isGameOver(x, y){
-		var win = false;
+	// function isGameOver(x, y){
+	// 	var win = false;
 
-		// for(var iii = 0; iii < (boardSize*2)+2; iii++){
-		// 	win[i] = 0;
-		// }
+	// 	// for(var iii = 0; iii < (boardSize*2)+2; iii++){
+	// 	// 	win[i] = 0;
+	// 	// }
 
-		for(var i = 0; i < boardSize; i++){
-			for(var ii = 0; ii < boardSize; ii++){
-				row[i] = board[i][ii][1] + row[i];
-				col[i] = board[ii][i][1] + col[i	];
+	// 	for(var i = 0; i < boardSize; i++){
+	// 		for(var ii = 0; ii < boardSize; ii++){
+	// 			row[i] = board[i][ii][1] + row[i];
+	// 			col[i] = board[ii][i][1] + col[i	];
 
-				if(i == ii){
-					diOne = diOne + board[ii][i][1];
-				}
+	// 			if(i == ii){
+	// 				diOne = diOne + board[ii][i][1];
+	// 			}
 
-				//need wiinng logic for bottom left to top right
-			}
-		}
+	// 			//need wiinng logic for bottom left to top right
+	// 		}
+	// 	}
 
-		for(var i = 0; i > boardSize; i++){
-			if (row[i] == (boardSize - 1) | row[i] == ((boardSize - 1) * -1)  ){
-				win = true;
-			}
-			if (col[i] == (boardSize - 1) | col[i] == ((boardSize - 1) * -1)  ){
-				win = true;
-			}
-			if( diOne == (boardSize - 1) | diOne == ((boardSize - 1) * -1) ){
-				win = true;
-			}
-		}
+	// 	for(var i = 0; i > boardSize; i++){
+	// 		if (row[i] == (boardSize - 1) | row[i] == ((boardSize - 1) * -1)  ){
+	// 			win = true;
+	// 		}
+	// 		if (col[i] == (boardSize - 1) | col[i] == ((boardSize - 1) * -1)  ){
+	// 			win = true;
+	// 		}
+	// 		if( diOne == (boardSize - 1) | diOne == ((boardSize - 1) * -1) ){
+	// 			win = true;
+	// 		}
+	// 	}
 
-		return win;
-	}
+	// 	return win;
+	// }
 
 
 
