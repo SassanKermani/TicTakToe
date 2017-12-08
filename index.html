@@ -51,7 +51,7 @@
 		
 		console.log(this);
 
-		var x =  parseInt( this.id[0] );
+		var x = parseInt( this.id[0] );
 		var y = parseInt( this.id[1] );
 
 		console.log( x + " " + y );
@@ -78,23 +78,60 @@
 
 			turn = turn + 1;
 		}
+		isGameOver();
 	}
 
 	function isGameOver(){
 		//getting x and y
-		var x =  parseInt( this.id[0] );
+		var x = parseInt( this.id[0] );
 		var y = parseInt( this.id[1] );
 
-		//win var
-		var win = [];
-		var isGameOverYet = false;
+		//divs we need
+		var win = false;
+		var row = [];
+		var col = [];
+		var diOne = 0;
+		var diTwo = 0;
 
-		for(var i = 0; i < (boardSize * 2) + 2; i++ ){
-			win[i] = false;
+
+		//should be up half the winning logic
+		var newSize = boardSize;
+		for(var i = 0; i < boardSize; i++){
+			for(var ii = 0; ii < boardSize; ii++ ){
+				row[i] = board[i][ii][1] + row[i];
+				col[i] = board[ii][i][1] + col[i];
+				if(i == ii){
+					diOne = board[i][ii][1] + diOne; 
+				}
+				if(ii - newSize == i ){
+					diTwo = board[i][ii][1] + diTwo;
+				}
+			}
 		}
 
-		
 
+		//the other half of the winning logic
+		for(var i = 0; i > row.length; i++){
+			if (row[i] = boardSize  || col[i] == boardSize){
+				win = true;
+				document.getElementById("title").innerHTML = "X WINS";
+			}
+			if (row[i] = boardSize * -1  || col[i] == boardSize  * -1){
+				win = true;
+				document.getElementById("title").innerHTML = "O WINS";
+			}
+		}
+
+		if( diOne == boardSize ||  diTwo == boardSize ){
+			win = true;
+				document.getElementById("title").innerHTML = "X WINS";
+		}
+		if( diOne == -boardSize ||  diTwo == -boardSize ){
+			win = true;
+				document.getElementById("title").innerHTML = "O WINS";
+		}
+
+		return win;												//there are no winners only players no longer plyaing the game
 	}
 
 
