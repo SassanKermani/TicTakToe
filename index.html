@@ -67,24 +67,24 @@
 				board[x][y][0].innerHTML = "X"
 				board[x][y][0].classList.add("xSpot")
 				document.getElementById("title").innerHTML = "O's Turn"
+				console.log( board[x][y][1] );
 			}else{
-				board[x][y][1] == -1;
+				board[x][y][1] = -1;
 				board[x][y][0].innerHTML = "O"
 				board[x][y][0].classList.add("oSpot")
 				document.getElementById("title").innerHTML = "X's Turn"
+				console.log( board[x][y][1] );
 			}
 
 
 
 			turn = turn + 1;
 		}
-		isGameOver();
-	}
-
-	function isGameOver(){
+			
+		//isGameOver();
 		//getting x and y
-		var x = parseInt( this.id[0] );
-		var y = parseInt( this.id[1] );
+		// var x = parseInt( this.id[0] );
+		// var y = parseInt( this.id[1] );
 
 		//divs we need
 		var win = false;
@@ -97,26 +97,38 @@
 		//should be up half the winning logic
 		var newSize = boardSize;
 		for(var i = 0; i < boardSize; i++){
+			row[i] = 0;
+			col[i] = 0;
 			for(var ii = 0; ii < boardSize; ii++ ){
+				
 				row[i] = board[i][ii][1] + row[i];
+				console.log( "line 103 " + board[i][ii][2] )
+				console.log( row[i] );
 				col[i] = board[ii][i][1] + col[i];
+				console.log( col[i] );
+
 				if(i == ii){
 					diOne = board[i][ii][1] + diOne; 
 				}
 				if(ii - newSize == i ){
 					diTwo = board[i][ii][1] + diTwo;
 				}
+
+				console.log(board[i][ii][1]);
+
 			}
 		}
 
+		var i = 0;
 
+		
 		//the other half of the winning logic
-		for(var i = 0; i > row.length; i++){
+		for( i = 0; i < row.length; i++){
 			if (row[i] = boardSize  || col[i] == boardSize){
-				win = true;
+				win == true;
 				document.getElementById("title").innerHTML = "X WINS";
 			}
-			if (row[i] = boardSize * -1  || col[i] == boardSize  * -1){
+			if (row[i] == boardSize * -1  || col[i] == boardSize  * -1){
 				win = true;
 				document.getElementById("title").innerHTML = "O WINS";
 			}
@@ -124,15 +136,66 @@
 
 		if( diOne == boardSize ||  diTwo == boardSize ){
 			win = true;
-				document.getElementById("title").innerHTML = "X WINS";
+			document.getElementById("title").innerHTML = "X WINS";
 		}
 		if( diOne == -boardSize ||  diTwo == -boardSize ){
 			win = true;
-				document.getElementById("title").innerHTML = "O WINS";
+			document.getElementById("title").innerHTML = "O WINS";
 		}
-
-		return win;												//there are no winners only players no longer plyaing the game
 	}
+
+	// function isGameOver(){
+	// 	//getting x and y
+	// 	var x = parseInt( this.id[0] );
+	// 	var y = parseInt( this.id[1] );
+
+	// 	//divs we need
+	// 	var win = false;
+	// 	var row = [];
+	// 	var col = [];
+	// 	var diOne = 0;
+	// 	var diTwo = 0;
+
+
+	// 	//should be up half the winning logic
+	// 	var newSize = boardSize;
+	// 	for(var i = 0; i < boardSize; i++){
+	// 		for(var ii = 0; ii < boardSize; ii++ ){
+	// 			row[i] = board[i][ii][1] + row[i];
+	// 			col[i] = board[ii][i][1] + col[i];
+	// 			if(i == ii){
+	// 				diOne = board[i][ii][1] + diOne; 
+	// 			}
+	// 			if(ii - newSize == i ){
+	// 				diTwo = board[i][ii][1] + diTwo;
+	// 			}
+	// 		}
+	// 	}
+
+
+	// 	//the other half of the winning logic
+	// 	for(var i = 0; i > row.length; i++){
+	// 		if (row[i] = boardSize  || col[i] == boardSize){
+	// 			win = true;
+	// 			document.getElementById("title").innerHTML = "X WINS";
+	// 		}
+	// 		if (row[i] = boardSize * -1  || col[i] == boardSize  * -1){
+	// 			win = true;
+	// 			document.getElementById("title").innerHTML = "O WINS";
+	// 		}
+	// 	}
+
+	// 	if( diOne == boardSize ||  diTwo == boardSize ){
+	// 		win = true;
+	// 			document.getElementById("title").innerHTML = "X WINS";
+	// 	}
+	// 	if( diOne == -boardSize ||  diTwo == -boardSize ){
+	// 		win = true;
+	// 			document.getElementById("title").innerHTML = "O WINS";
+	// 	}
+
+	// 	return win;												//there are no winners only players no longer plyaing the game
+	// }
 
 
 	for(var i = 0; i < boardSize; i++){
@@ -155,6 +218,7 @@
 			document.getElementById("InBody").appendChild(board[i][ii][0]);
 
 			board[i][ii][1] = 0;													//who ouns the thing
+			console.log( board[i][ii][1] );
 			board[i][ii][2] = 0;													//the turn number it was played on
 
 		}
