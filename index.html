@@ -51,8 +51,8 @@
 		
 		console.log(this);
 
-		var x = parseInt( this.id[0] );
-		var y = parseInt( this.id[1] );
+		let x = parseInt( this.id[0] );
+		let y = parseInt( this.id[1] );
 
 		console.log( x + " " + y );
 
@@ -87,19 +87,19 @@
 		// var y = parseInt( this.id[1] );
 
 		//divs we need
-		var win = false;
-		var row = [];
-		var col = [];
-		var diOne = 0;
-		var diTwo = 0;
+		let win = false;
+		let row = [];
+		let col = [];
+		let diOne = 0;
+		let diTwo = 0;
 
 
 		//should be up half the winning logic
-		var newSize = boardSize;
-		for(var i = 0; i < boardSize; i++){
+		let newSize = boardSize;
+		for(let i = 0; i < boardSize; i++){
 			row[i] = 0;
 			col[i] = 0;
-			for(var ii = 0; ii < boardSize; ii++ ){
+			for(let ii = 0; ii < boardSize; ii++ ){
 				
 				row[i] = board[i][ii][1] + row[i];
 				console.log( "line 103 " + board[i][ii][2] )
@@ -119,12 +119,10 @@
 			}
 		}
 
-		var i = 0;
-
 		
 		//the other half of the winning logic
-		for( i = 0; i < row.length; i++){
-			if (row[i] = boardSize  || col[i] == boardSize){
+		for( let i = 0; i < row.length; i++){
+			if (row[i] == boardSize  || col[i] == boardSize){
 				win == true;
 				document.getElementById("title").innerHTML = "X WINS";
 			}
@@ -198,17 +196,17 @@
 	// }
 
 
-	for(var i = 0; i < boardSize; i++){
+	for(let i = 0; i < boardSize; i++){
 
 		board[i] = [];
 
-		for(var ii = 0; ii < boardSize; ii++){
+		for(let ii = 0; ii < boardSize; ii++){
 			board[i][ii] = [];
 			board[i][ii][0] = document.createElement("button");						//the divs
 			board[i][ii][0].classList.add("gameSpot");
 			board[i][ii][0].innerHTML = "_";
 
-			var toString = i.toString() + ii.toString();
+			let toString = i.toString() + ii.toString();
 			console.log(" pleas jsut work " + toString);
 			board[i][ii][0].setAttribute("id", toString )
 
