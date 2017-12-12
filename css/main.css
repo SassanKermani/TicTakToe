@@ -1,22 +1,22 @@
 #InBody{
-	margin-top: 10vh;
-}
+		margin-top: 10vh;
+	}
 
-.gameSpot{
-	display: inline-block;
-	background-color: aqua;
-	/*height: 10vh;
-	width: 10vh;*/
-	text-align: center;
-	padding: 5% 5% 5% 5%;
-	border: solid black 3px;
-}
+	.gameSpot{
+		display: inline-block;
+		background-color: aqua;
+		/*height: 10vh;
+		width: 10vh;*/
+		text-align: center;
+		padding: 5% 5% 5% 5%;
+		border: solid black 3px;
+	}
 
-.xSpot{
-	background-color: red;
+	.xSpot{
+		background-color: red;
 
-}
+	}
 
-.oSpot{
-	background-color: blue;
-}
+	.oSpot{
+		background-color: blue;
+	}	
